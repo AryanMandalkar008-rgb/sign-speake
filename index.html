@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101827">
+  <meta name="description" content="A privacy-first, browser-based hand gesture to words demo.">
+  <title>SignSpeak — Hand Gestures to Words</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">✳</span><span>Sign<span class="brand-accent">Speak</span><small>COMMUNICATION, CLOSER</small></span></a>
+    <div class="privacy"><span class="live-dot"></span> Camera stays on your device</div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow"><span></span> ACCESSIBILITY LAB · BROWSER-BASED</div>
+      <h1>Let your hands<br><em>find the words.</em></h1>
+      <p class="hero-copy">A simple camera-powered demo that recognizes a few common hand gestures and turns them into readable words.</p>
+      <div class="hero-tags"><span>● No account</span><span>● No database</span><span>● Runs in your browser</span></div>
+    </section>
+
+    <section class="workspace">
+      <div class="camera-panel">
+        <div class="panel-heading">
+          <div><span class="section-kicker">01 / CAMERA</span><h2>Show a hand gesture</h2></div>
+          <span class="status-pill" id="cameraStatus"><i></i> Camera off</span>
+        </div>
+        <div class="camera-frame">
+          <video id="webcam" autoplay playsinline muted></video>
+          <canvas id="overlay"></canvas>
+          <div class="camera-placeholder" id="placeholder">
+            <div class="camera-icon">◎</div>
+            <strong>Your camera preview appears here</strong>
+            <span>Use good lighting and keep one hand in frame.</span>
+          </div>
+          <div class="camera-hud"><span>LIVE INPUT</span><span id="fpsLabel">WAITING</span></div>
+        </div>
+        <div class="camera-controls">
+          <button class="primary-btn" id="startBtn"><span>▶</span> Start camera</button>
+          <button class="secondary-btn" id="stopBtn" disabled>Stop</button>
+          <label class="toggle"><input id="speakToggle" type="checkbox"><span class="toggle-ui"></span><span>Speak result</span></label>
+        </div>
+        <p class="camera-note" id="cameraNote">Camera access requires permission and a secure page (HTTPS or localhost).</p>
+      </div>
+
+      <div class="result-panel">
+        <div class="panel-heading">
+          <div><span class="section-kicker">02 / INTERPRETATION</span><h2>Detected meaning</h2></div>
+          <span class="sparkle">✦</span>
+        </div>
+        <div class="result-card">
+          <div class="result-top"><span class="result-label">CURRENT GESTURE</span><span class="confidence" id="confidence">—</span></div>
+          <div class="result-word" id="resultWord">Ready<span>.</span></div>
+          <p class="result-description" id="resultDescription">Start the camera, then hold a clear hand gesture in view.</p>
+          <div class="recognition-line"><span id="recognitionBar"></span></div>
+          <div class="result-meta"><span>MODEL STATUS</span><strong id="modelStatus">Not loaded</strong></div>
+        </div>
+        <div class="phrase-card">
+          <div class="phrase-heading"><div><span class="section-kicker">03 / YOUR MESSAGE</span><h3>Build a phrase</h3></div><button id="clearBtn" class="text-btn">Clear</button></div>
+          <div class="phrase-output" id="phraseOutput">Your recognized words will appear here…</div>
+          <div class="phrase-actions"><button id="addBtn" class="secondary-btn" disabled>＋ Add word</button><button id="speakPhraseBtn" class="secondary-btn">🔊 Read phrase</button><button id="copyBtn" class="secondary-btn">Copy</button></div>
+          <div class="phrase-footnote">Words are added manually so brief detection changes don't create a confusing sentence.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gesture-guide">
+      <div class="guide-heading"><div><span class="section-kicker">QUICK GUIDE</span><h2>Gestures this demo can recognize</h2></div><p>These are simple gesture-to-word shortcuts, not a complete sign-language interpreter.</p></div>
+      <div class="guide-grid">
+        <article class="guide-card"><div class="gesture-symbol open-palm">✋</div><div><h3>Open palm</h3><p>Hello / Stop</p></div></article>
+        <article class="guide-card"><div class="gesture-symbol fist">✊</div><div><h3>Closed fist</h3><p>Stop / Wait</p></div></article>
+        <article class="guide-card"><div class="gesture-symbol thumb">👍</div><div><h3>Thumbs up</h3><p>Yes / Good</p></div></article>
+        <article class="guide-card"><div class="gesture-symbol peace">✌️</div><div><h3>Victory</h3><p>Peace / Two</p></div></article>
+        <article class="guide-card"><div class="gesture-symbol point">☝️</div><div><h3>Pointing up</h3><p>One / Attention</p></div></article>
+      </div>
+      <div class="important-note"><span>ⓘ</span><p><strong>Important:</strong> Sign languages have their own grammar, facial expressions, movement and regional variations. This prototype uses a pretrained general hand-gesture model; it does <strong>not</strong> accurately translate full sign language or signed sentences. Use it as a learning/demo project, not as a substitute for a qualified interpreter.</p></div>
+    </section>
+  </main>
+
+  <footer><span>SignSpeak <b>·</b> Built for accessible communication</span><span>Private by design — video is processed in this browser</span></footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
