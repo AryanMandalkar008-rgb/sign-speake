@@ -68,6 +68,30 @@
       </div>
     </section>
 
+
+    <section class="training-section">
+      <div class="guide-heading">
+        <div><span class="section-kicker">ADVANCED / PERSONAL TRAINING</span><h2>Teach SignSpeak your own gestures</h2></div>
+        <p>Save examples from your webcam to teach this browser custom static hand poses. No database or account required.</p>
+      </div>
+      <div class="training-layout">
+        <div class="training-card">
+          <label class="training-label" for="customLabel">Gesture name / word</label>
+          <input id="customLabel" class="training-input" maxlength="32" placeholder="e.g. Thank you (custom pose)" autocomplete="off">
+          <div class="training-buttons">
+            <button class="primary-btn" id="captureSampleBtn" disabled>＋ Save current hand pose</button>
+            <button class="secondary-btn" id="clearTrainingBtn">Clear custom training</button>
+          </div>
+          <p class="training-help" id="trainingStatus">Start the camera, enter a label, and hold the pose. Save 5–10 examples for each custom pose.</p>
+        </div>
+        <div class="training-card training-list-card">
+          <div class="training-list-heading"><strong>Your custom gestures</strong><span id="customCount">0 examples</span></div>
+          <div id="customList" class="custom-list"><span class="empty-custom">No custom gestures trained yet.</span></div>
+        </div>
+      </div>
+      <div class="important-note"><span>ⓘ</span><p><strong>Training limitation:</strong> this stores examples of single-hand static poses on this device only. It is not a pretrained full sign-language model. Real sign-language translation needs a properly licensed, language-specific dataset and a model that understands movement, both hands, facial expressions and grammar. Custom examples may vary with camera angle and hand position.</p></div>
+    </section>
+
     <section class="gesture-guide">
       <div class="guide-heading"><div><span class="section-kicker">QUICK GUIDE</span><h2>Gestures this demo can recognize</h2></div><p>These are simple gesture-to-word shortcuts, not a complete sign-language interpreter.</p></div>
       <div class="guide-grid">
